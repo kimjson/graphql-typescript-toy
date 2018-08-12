@@ -11,12 +11,15 @@ module.exports = {
   "username": process.env[`TYPEORM_USERNAME_${nodeEnv}`],
   "password": process.env[`TYPEORM_PASSWORD_${nodeEnv}`],
   "database": process.env[`TYPEORM_DATABASE_${nodeEnv}`],
-  "synchronize": process.env[`TYPEORM_SYNCHRONIZE_${nodeEnv}`],
-  "logging": process.env[`TYPEORM_LOGGING_${nodeEnv}`],
+  "synchronize": false,
+  "logging": true,
   "entities": [
-    process.env[`TYPEORM_ENTITIES_${nodeEnv}`]
+    "src/models/**/*.js"
   ],
   "migrations": [
-    process.env[`TYPEORM_MIGRATIONS_${nodeEnv}`]
-  ]
+    "src/migrations/*.js"
+  ],
+  "cli": {
+    "migrationsDir": "src/migrations"
+  }
 }
